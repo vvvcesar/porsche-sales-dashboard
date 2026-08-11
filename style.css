@@ -1,0 +1,395 @@
+/* =====================================================
+   PORSCHE SALES ANALYTICS DASHBOARD
+   MVP 1.0
+===================================================== */
+
+:root{
+
+    --bg:#f4f5f7;
+    --sidebar:#111111;
+    --card:#ffffff;
+    --primary:#D5001C;
+    --text:#222222;
+    --text-light:#777777;
+    --border:#e8e8e8;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+
+}
+
+.layout{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+/* =======================================
+SIDEBAR
+======================================= */
+
+.sidebar{
+
+    width:240px;
+    background:var(--sidebar);
+    color:white;
+    padding:30px;
+
+}
+
+.logo{
+
+    margin-bottom:40px;
+
+}
+
+.logo h2{
+
+    letter-spacing:4px;
+    font-size:28px;
+
+}
+
+.logo span{
+
+    color:#bbbbbb;
+    font-size:14px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    padding:14px 0;
+    color:#d0d0d0;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.sidebar li i{
+
+    width:25px;
+
+}
+
+.sidebar li:hover,
+.sidebar .active{
+
+    color:white;
+
+}
+
+.sidebar-footer{
+
+    position:absolute;
+    bottom:25px;
+
+    color:#888;
+
+    font-size:12px;
+
+}
+
+/* =======================================
+CONTENT
+======================================= */
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+.topbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+
+}
+
+.topbar h1{
+
+    font-size:30px;
+
+}
+
+.topbar p{
+
+    color:var(--text-light);
+    margin-top:5px;
+
+}
+
+#btnExportar{
+
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+
+}
+
+/* =======================================
+FILTROS
+======================================= */
+
+.filters{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:30px;
+
+}
+
+.filter{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.filter label{
+
+    margin-bottom:8px;
+    font-size:14px;
+    color:var(--text-light);
+
+}
+
+.filter select{
+
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:white;
+
+}
+
+.action{
+
+    justify-content:flex-end;
+
+}
+
+#btnLimpar{
+
+    background:#333;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+
+}
+
+/* =======================================
+KPIs
+======================================= */
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+
+}
+
+.card{
+
+    background:white;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.card-title{
+
+    color:var(--text-light);
+    font-size:14px;
+    margin-bottom:12px;
+
+}
+
+.card-value{
+
+    font-size:34px;
+    font-weight:700;
+    color:var(--primary);
+
+}
+
+/* =======================================
+GRÁFICOS
+======================================= */
+
+.charts{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+.chart-card{
+
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.chart-card h3{
+
+    margin-bottom:18px;
+    font-size:18px;
+
+}
+
+canvas{
+
+    width:100% !important;
+    height:320px !important;
+
+}
+
+/* =======================================
+INSIGHTS
+======================================= */
+
+.insights{
+
+    background:white;
+    margin-top:30px;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.insights h2{
+
+    margin-bottom:20px;
+
+}
+
+.insights ul{
+
+    padding-left:20px;
+
+}
+
+.insights li{
+
+    margin-bottom:12px;
+
+}
+
+/* =======================================
+FOOTER
+======================================= */
+
+footer{
+
+    text-align:center;
+    color:#999;
+    margin:40px 0 10px;
+
+}
+
+/* =======================================
+RESPONSIVO
+======================================= */
+
+@media(max-width:1200px){
+
+.cards{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.charts{
+
+    grid-template-columns:1fr;
+
+}
+
+.filters{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.layout{
+
+    flex-direction:column;
+
+}
+
+.sidebar{
+
+    width:100%;
+    position:relative;
+
+}
+
+.sidebar-footer{
+
+    position:relative;
+    margin-top:30px;
+
+}
+
+.filters{
+
+    grid-template-columns:1fr;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.topbar{
+
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+
+}
+
+}

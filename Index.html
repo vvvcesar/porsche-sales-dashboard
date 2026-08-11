@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Porsche Sales Analytics Dashboard</title>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ================================= -->
+    <!-- SIDEBAR                           -->
+    <!-- ================================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>PORSCHE</h2>
+
+            <span>Sales Analytics</span>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li class="active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-car"></i>
+                    Modelos
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-city"></i>
+                    Cidades
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-credit-card"></i>
+                    Pagamentos
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Insights
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <small>
+
+                Porsche Sales Analytics
+
+                <br>
+
+                MVP v1.0
+
+            </small>
+
+        </div>
+
+    </aside>
+
+    <!-- ================================= -->
+    <!-- CONTEÚDO                          -->
+    <!-- ================================= -->
+
+    <main class="content">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Porsche Sales Analytics Dashboard</h1>
+
+                <p>Executive Overview</p>
+
+            </div>
+
+            <button id="btnExportar">
+
+                <i class="fa-solid fa-download"></i>
+
+                Exportar
+
+            </button>
+
+        </header>
+
+        <!-- ================================= -->
+        <!-- FILTROS                           -->
+        <!-- ================================= -->
+
+        <section class="filters">
+
+            <div class="filter">
+
+                <label>Modelo Porsche</label>
+
+                <select id="modelo">
+
+                    <option value="">Todos</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter">
+
+                <label>Model Year</label>
+
+                <select id="ano">
+
+                    <option value="">Todos</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter">
+
+                <label>Cidade</label>
+
+                <select id="cidade">
+
+                    <option value="">Todas</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter">
+
+                <label>Forma de Pagamento</label>
+
+                <select id="pagamento">
+
+                    <option value="">Todas</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter action">
+
+                <button id="btnLimpar">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Limpar Filtros
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- KPIs                             -->
+        <!-- ================================= -->
+
+        <section class="cards">
+                        <!-- KPI 1 -->
+            <div class="card">
+                <div class="card-title">Total de Vendas</div>
+                <div class="card-value" id="kpiTotal">0</div>
+            </div>
+
+            <!-- KPI 2 -->
+            <div class="card">
+                <div class="card-title">Receita</div>
+                <div class="card-value" id="kpiReceita">R$ 0</div>
+            </div>
+
+            <!-- KPI 3 -->
+            <div class="card">
+                <div class="card-title">Ticket Médio</div>
+                <div class="card-value" id="kpiTicket">R$ 0</div>
+            </div>
+
+            <!-- KPI 4 -->
+            <div class="card">
+                <div class="card-title">Modelo Líder</div>
+                <div class="card-value" id="kpiModelo">-</div>
+            </div>
+
+        </section>
+
+        <!-- ================================ -->
+        <!-- GRÁFICOS                         -->
+        <!-- ================================ -->
+
+        <section class="charts">
+
+            <div class="chart-card">
+
+                <h3>Modelos Vendidos por Cidade</h3>
+
+                <canvas id="chartModelos"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>Receita por Cidade</h3>
+
+                <canvas id="chartReceita"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>Modelos por Ano</h3>
+
+                <canvas id="chartAno"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>Forma de Pagamento</h3>
+
+                <canvas id="chartPagamento"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- ================================ -->
+        <!-- INSIGHTS                         -->
+        <!-- ================================ -->
+
+        <section class="insights">
+
+            <h2>Executive Insights</h2>
+
+            <ul id="insights">
+
+                <li>Aguardando carregamento dos dados...</li>
+
+            </ul>
+
+        </section>
+
+        <!-- ================================ -->
+        <!-- FOOTER                           -->
+        <!-- ================================ -->
+
+        <footer>
+
+            <span>
+
+                Porsche Sales Analytics Dashboard • MVP 1.0
+
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- JavaScript -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
